@@ -99,7 +99,7 @@ public class HadoopCassandraWrite {
         //Cassandra configurations
         job.setOutputFormatClass(CqlOutputFormat.class);
         
-        ConfigHelper.setOutputInitialAddress(job.getConfiguration(), "192.168.222.137");
+        ConfigHelper.setOutputInitialAddress(job.getConfiguration(), "");//set your cassandra IP address here
         ConfigHelper.setOutputColumnFamily(job.getConfiguration(), "bigdata", "wordcountshakespeare");
         
         ConfigHelper.setOutputPartitioner(job.getConfiguration(), "Murmur3Partitioner");

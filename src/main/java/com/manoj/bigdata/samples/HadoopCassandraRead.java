@@ -68,7 +68,7 @@ public class HadoopCassandraRead {
 		job.setReducerClass(Reducer1.class);
 		job.setInputFormatClass(CqlInputFormat.class);
 		
-		ConfigHelper.setInputInitialAddress(job.getConfiguration(), "192.168.222.137");
+		ConfigHelper.setInputInitialAddress(job.getConfiguration(), "");//set your cassandra IP address here
 		ConfigHelper.setInputColumnFamily(job.getConfiguration(), "bigdata", "wordcountshakespeare");
 		ConfigHelper.setInputPartitioner(job.getConfiguration(), "Murmur3Partitioner");
 		CqlConfigHelper.setInputCQLPageRowSize(job.getConfiguration(), "3");
