@@ -3,6 +3,7 @@ package com.manoj.bigdata.samples;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,7 @@ public class HadoopCassandraWrite {
 	}
 	
 	public static void main(String[] args) throws Exception {
+		long start_time = Calendar.getInstance().getTime().getTime();
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "Hadoop Cassandra Write");
         job.setJarByClass(HadoopCassandraWrite.class);
@@ -104,9 +106,11 @@ public class HadoopCassandraWrite {
         String query = "update bigdata.wordcountshakespeare set count=?";
         CqlConfigHelper.setOutputCql(job.getConfiguration(), query);
         
+        boolean status = job.waitForCompletion(true) ;
         
-        
-        
-        System.exit(job.waitForCompletion(true) ? 0 : 1);
+        if(status) {
+        	long end_time = Calendar.getInstance().getTime().getTime();
+        	System.out.println("Time taken for Hadoop MR:"+(end_time - start_time)/1000+" seconds");
+        } 
     }
 }

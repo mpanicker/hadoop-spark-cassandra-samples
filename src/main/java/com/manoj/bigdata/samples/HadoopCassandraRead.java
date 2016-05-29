@@ -1,6 +1,8 @@
 package com.manoj.bigdata.samples;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -52,6 +54,7 @@ public class HadoopCassandraRead {
 	}
 	
 	public static void main(String[] args) throws Exception {
+		long start_time = Calendar.getInstance().getTime().getTime();
 		Configuration conf = new Configuration();
 		
 		// configuration should contain reference to your namenode
@@ -77,7 +80,12 @@ public class HadoopCassandraRead {
         
         FileOutputFormat.setOutputPath(job, new Path(args[0]));
         
-        System.exit(job.waitForCompletion(true) ? 0 : 1);
+        boolean status = job.waitForCompletion(true) ;
+        
+        if(status) {
+        	long end_time = Calendar.getInstance().getTime().getTime();
+        	System.out.println("Time taken for Hadoop MR:"+(end_time - start_time)/1000+" seconds");
+        } 
 		
 		
 	}
