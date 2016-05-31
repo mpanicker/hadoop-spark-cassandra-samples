@@ -99,7 +99,7 @@ public class HadoopCassandraWrite {
         //Cassandra configurations
         job.setOutputFormatClass(CqlOutputFormat.class);
         
-        ConfigHelper.setOutputInitialAddress(job.getConfiguration(), "");//set your cassandra IP address here
+        ConfigHelper.setOutputInitialAddress(job.getConfiguration(), "192.168.222.137");//set your cassandra IP address here
         ConfigHelper.setOutputColumnFamily(job.getConfiguration(), "bigdata", "wordcountshakespeare");
         
         ConfigHelper.setOutputPartitioner(job.getConfiguration(), "Murmur3Partitioner");
@@ -110,7 +110,7 @@ public class HadoopCassandraWrite {
         
         if(status) {
         	long end_time = Calendar.getInstance().getTime().getTime();
-        	System.out.println("Time taken for Hadoop MR:"+(end_time - start_time)/1000+" seconds");
+        	System.out.println("Time taken for Hadoop MR write to Cassandra:"+(end_time - start_time)/1000+" seconds");
         } 
     }
 }
