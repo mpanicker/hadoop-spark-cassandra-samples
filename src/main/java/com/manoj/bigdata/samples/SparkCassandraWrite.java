@@ -52,11 +52,11 @@ public class SparkCassandraWrite {
 		long startTime = Calendar.getInstance().getTimeInMillis();
 	    SparkConf conf = new SparkConf().setAppName("Spark Cassandra Write");
 	    conf.setMaster("local[4]");//run on 4 cores locally
-        conf.set("spark.cassandra.connection.host", "192.168.222.137"); 
+        conf.set("spark.cassandra.connection.host", ""); //set your cassandra IP address here
 	    
 	    JavaSparkContext sc = new JavaSparkContext(conf);
 	    
-	    JavaPairRDD<String,Integer> words = sc.textFile("/home/mpanicker/projects/samples/all-shakespeare.txt").flatMap(new FlatMapFunction<String,String>(){
+	    JavaPairRDD<String,Integer> words = sc.textFile(args[0]).flatMap(new FlatMapFunction<String,String>(){
 	    	
 	    	public List<String> call(String line) {
 	    		return Arrays.asList(line.split(" "));//split each line into words

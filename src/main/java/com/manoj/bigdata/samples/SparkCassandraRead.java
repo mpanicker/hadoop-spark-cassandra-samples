@@ -46,7 +46,7 @@ public class SparkCassandraRead {
 		long startTime = Calendar.getInstance().getTimeInMillis();
 	    SparkConf conf = new SparkConf().setAppName("Spark Cassandra Read");
 	    conf.setMaster("local[4]");//run on 4 cores locally
-        conf.set("spark.cassandra.connection.host", "192.168.222.137"); 
+        conf.set("spark.cassandra.connection.host", ""); //set your cassandra IP address here
 	    
 	    JavaSparkContext sc = new JavaSparkContext(conf);
 	    
