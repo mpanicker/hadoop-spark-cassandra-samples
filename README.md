@@ -50,6 +50,21 @@ A good site to visit to get more details is http://docs.datastax.com/en/cassandr
         
         a. Install and open Eclipse( I have version 4.5.2(Mars) )
 
+Setting up Cassandra db and table
+-----------------------------------
+1. bin/cqlsh <ipaddress>
+2. CREATE KEYSPACE bigdata
+  WITH REPLICATION = { 
+   'class' : 'SimpleStrategy', 
+   'replication_factor' : 1 
+  };	
+3. use bigdata;
+4. CREATE TABLE bigdata.wordcountshakespeare ( 
+   id UUID PRIMARY KEY, 
+   word text, 
+   count text );	
+
+
 Downloading and running the samples
 -----------------------------------
 1. git clone https://github.com/mpanicker/hadoop-spark-cassandra-samples.git
