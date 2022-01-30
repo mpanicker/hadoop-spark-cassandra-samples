@@ -60,8 +60,7 @@ Setting up Cassandra db and table
   };	
 3. use bigdata;
 4. CREATE TABLE bigdata.wordcountshakespeare ( 
-   id UUID PRIMARY KEY, 
-   word text, 
+   word text PRIMARY KEY, 
    count text );	
 
 
